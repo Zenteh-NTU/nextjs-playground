@@ -26,3 +26,50 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_source=github.com&utm_medium=referral&utm_campaign=turborepo-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Setting up and installing TailwindCSS with DaisyUI
+
+1. Install Tailwind CSS 
+   ```
+   pnpm install -D tailwindcss postcss autoprefixer
+   pnpm dlx tailwindcss init -p
+   ```
+2. Configure Template paths in `tailwind.config.js`
+    ```
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+    content: [
+        "./app/**/*.{js,ts,jsx,tsx,mdx}",
+        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    
+        // Or if using `src` directory:
+        "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+    }
+    ```
+
+3. Add Tailwind Directives to your CSS, in `globals.css` 
+    ```
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ```
+
+4. Install daisyUI
+   ```
+   pnpm i -D daisyui@latest
+   ```
+2. Configure and add daisyUI to `tailwind.config.js`
+    ```
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+    //...
+    plugins: [require("daisyui")],
+    }
+    ```
